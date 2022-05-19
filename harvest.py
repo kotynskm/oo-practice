@@ -89,7 +89,7 @@ def make_melon_types():
 
     return all_melon_types
 
-melon_list = make_melon_types()
+# melon_list = make_melon_types()
 
 
 def print_pairing_info(melon_types):
@@ -100,12 +100,22 @@ def print_pairing_info(melon_types):
             print(f"- {pairing}")
 
     # Fill in the rest
-print_pairing_info(melon_list)
+
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
+    # loop over melon types, access each melon code by melon.code - make that a key with value of melon instance
+    melon_dict = {}
 
+    for melon in melon_types:
+        key = melon.code
+        melon_dict[key] = melon
+    
+    return melon_dict 
+
+# make_melon_type_lookup(melon_list)
     # Fill in the rest
+
 
 
 ############
@@ -115,6 +125,19 @@ def make_melon_type_lookup(melon_types):
 
 class Melon:
     """A melon in a melon harvest."""
+    def __init__(self, type, shape_rating, color_rating, location, harvester):
+        """Initialize a melon."""
+        self.type = type
+        self.shape_rating = shape_rating
+        self.color_rating = color_rating
+        self.location = location
+        self.harvester = harvester
+
+    def is_sellable(self):
+        if self.shape_rating > 5 and self.color_rating > 5:
+            return True
+        else:
+            return False
 
     # Fill in the rest
     # Needs __init__ and is_sellable methods
@@ -122,6 +145,7 @@ class Melon:
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
+    
 
     # Fill in the rest
 
